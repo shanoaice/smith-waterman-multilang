@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/impl/">
+    <Project Path="impl/csharp/csharp.csproj" />
+    <Project Path="impl/fsharp/fsharp.fsproj" />
+  </Folder>
+</Solution>
