@@ -7,7 +7,7 @@ module private Helper =
     let createMatrix (subjectLength, queryLength) =
         Array.zeroCreate ((subjectLength + 1) * (queryLength + 1))
 
-    let inline idx queryLength (i, j) = i * queryLength + j
+    let inline idx columnWidth (i, j) = i * columnWidth + j
 
     let inline getMatrix columnWidth (matrix: array<'a>) (i, j) = matrix[idx columnWidth (i, j)]
 
@@ -48,15 +48,27 @@ module private Helper =
         | Diagonal
         | Stop
 
-    let getDirection (getMatrix: (int * int) -> int) (i, j)=
+    let getDirection (getMatrix: (int * int) -> int) (i, j) (query: string, subject: string) (matchBonus, mismatchPenalty, gapPenalty)=
         let cur = getMatrix (i, j)
 
-        if cur = 0 then Stop
-        elif diag >= up && diag >= left then Diagonal
-        else if up >= left then Upward
-        else Leftward
+        let diag = getMatrix (i - 1, j - 1)
+        let diagMatch = cur - matchBonus
+        let diagMismatch = cur + mismatchPenalty
 
-    let backtrackAlignment (subject: string, query: string) (matrix: array<int>) =
+        let up = getMatrix (i - 1, j)
+        let upGap = cur + gapPenalty
+
+        let left = getMatrix (i, j - 1)
+        let leftGap = cur + gapPenalty
+
+        if cur = 0 then Stop
+        elif diag = diagMatch && subject[i - 1] = query[j - 1] then Diagonal
+        elif diag = diagMismatch && subject[i - 1] <> query[j - 1] then Diagonal
+        elif up = upGap then Upward
+        elif left = leftGap then Leftward
+        else Stop
+
+    let backtrackAlignment (subject: string, query: string) (matrix: array<int>) scoreProperty=
         let subjectLength = subject.Length
         let queryLength = query.Length
 
@@ -75,30 +87,30 @@ module private Helper =
         let queryLine = new StringBuilder(max subjectLength queryLength)
 
         // this is a branched tail-call and .NET JIT should be smart enough to optimize it
-        let rec backtrackRecursive (currentRow, currentCol) =
+        let rec backtrackRecursive (currentRow, currentCol) scoreProperty =
             if currentRow = 0 || currentCol = 0 then
                 ()
             else
                 let getMatrix = getMatrix (queryLength + 1) matrix
 
-                let direction = getDirection getMatrix (currentRow, currentCol)
+                let direction = getDirection getMatrix (currentRow, currentCol) (query, subject) scoreProperty
 
                 match direction with
                 | Upward ->
                     let _ = subjectLine.Insert(0, subject[currentRow - 1])
                     let _ = queryLine.Insert(0, '-')
-                    backtrackRecursive (currentRow - 1, currentCol)
+                    backtrackRecursive (currentRow - 1, currentCol) scoreProperty
                 | Leftward ->
                     let _ = subjectLine.Insert(0, '-')
                     let _ = queryLine.Insert(0, query[currentCol - 1])
-                    backtrackRecursive (currentRow, currentCol - 1)
+                    backtrackRecursive (currentRow, currentCol - 1) scoreProperty
                 | Diagonal ->
                     let _ = subjectLine.Insert(0, subject[currentRow - 1])
                     let _ = queryLine.Insert(0, query[currentCol - 1])
-                    backtrackRecursive (currentRow - 1, currentCol - 1)
+                    backtrackRecursive (currentRow - 1, currentCol - 1) scoreProperty
                 | Stop -> ()
 
-        backtrackRecursive (maxScoreIndex / (queryLength + 1), maxScoreIndex % (queryLength + 1))
+        backtrackRecursive (maxScoreIndex / (queryLength + 1), maxScoreIndex % (queryLength + 1)) scoreProperty
 
         subjectLine.ToString(), queryLine.ToString()
 
@@ -110,4 +122,4 @@ let smithWaterman (subject: string, query: string) (matchBonus, mismatchPenalty,
 
     Helper.calculateMatrix (subject, query) matrix (matchBonus, mismatchPenalty, gapPenalty)
 
-    Helper.backtrackAlignment (subject, query) matrix
+    Helper.backtrackAlignment (subject, query) matrix (matchBonus, mismatchPenalty, gapPenalty)
