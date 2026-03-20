@@ -5,6 +5,8 @@ This project is a small experiment for the Korf Lab to see which languages (cobi
 ## Implementations
 
 - F#
-  `impl/SmithWaterman.FSharp`
+  `src/SmithWaterman.FSharp`
 - C#
-  `impl/SmithWaterman.CSharp` 
+  `src/SmithWaterman.CSharp` 
+- Rust
+  `src/rust`

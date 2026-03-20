@@ -1,6 +1,6 @@
 <Solution>
-  <Folder Name="/impl/">
-    <Project Path="impl/SmithWaterman.FSharp/SmithWaterman.FSharp.fsproj" />
-    <Project Path="impl\SmithWaterman.CSharp\SmithWaterman.CSharp.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/SmithWaterman.FSharp/SmithWaterman.FSharp.fsproj" />
+    <Project Path="src/SmithWaterman.CSharp/SmithWaterman.CSharp.csproj" />
   </Folder>
 </Solution>
