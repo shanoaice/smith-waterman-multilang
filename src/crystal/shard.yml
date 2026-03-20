@@ -1,0 +1,13 @@
+name: crystal
+version: 0.1.0
+
+authors:
+  - Shanoa Ice <your-email-here>
+
+targets:
+  crystal:
+    main: src/crystal.cr
+
+crystal: '>= 1.19.1'
+
+license: MIT
