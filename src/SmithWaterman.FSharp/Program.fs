@@ -1,46 +1,56 @@
-﻿// For more information see https://aka.ms/fsharp-console-apps
+﻿module SmithWaterman.FSharp.Main
 
 open System.Linq
 open System
 open System.IO
+open System.CommandLine
+
+let queryOption =
+    new CommandLine.Option<FileInfo>("--query", "-q", Description = "Query sequence file", Required = true)
+
+let subjectOption =
+    new CommandLine.Option<FileInfo>("--subject", "-s", Description = "Subject sequence file", Required = true)
+
+let mismatchPenaltyOption =
+    new CommandLine.Option<int>("--mismatch-penalty", "-M", Description = "Score penalty for a mismatch")
+
+mismatchPenaltyOption.DefaultValueFactory <- fun _ -> 1
+
+let matchBonusOption =
+    new CommandLine.Option<int>("--match-bonus", "-m", Description = "Score for a match")
+
+matchBonusOption.DefaultValueFactory <- fun _ -> 2
+
+let gapPenaltyOption =
+    new CommandLine.Option<int>("--gap-penalty", "-g", Description = "Score penalty for a gap")
+
+gapPenaltyOption.DefaultValueFactory <- fun _ -> 2
+
+let rootCommand = new RootCommand "sample Smith-Waterman alignment program in F#"
+
+rootCommand.Options.Add queryOption
+rootCommand.Options.Add subjectOption
+rootCommand.Options.Add mismatchPenaltyOption
+rootCommand.Options.Add matchBonusOption
+rootCommand.Options.Add gapPenaltyOption
 
 let args = System.Environment.GetCommandLineArgs()
+let cliArgs = args |> Array.skip 1
 
-if args.Contains "-h" || args.Contains "--help" then
-    printfn $"Usage: SmithWaterman.FSharp [options] <input>\n"
-    printfn "If \"-\" is specified as input, takes input from STDIN.\n"
-    printfn "Options:"
-    printfn "  -h, --help\t Prints this message"
-    exit 0
+let rootCommandHandler (parseResult: CommandLine.ParseResult) =
+    let querySequence = parseResult.GetValue(queryOption).OpenText().ReadLine()
+    let subjectSequence = parseResult.GetValue(subjectOption).OpenText().ReadLine()
 
-if args.Length < 2 then
-    printfn "Error: No input file specified."
-    exit 1
+    let matchBonus = parseResult.GetValue(matchBonusOption)
+    let mismatchPenalty = parseResult.GetValue(mismatchPenaltyOption)
+    let gapPenalty = parseResult.GetValue(gapPenaltyOption)
 
-let filename = args[1]
+    let topSequence, sideSequence = Algorithm.smithWaterman (subjectSequence, querySequence) (matchBonus, mismatchPenalty, gapPenalty)
 
-let fullPath =
-    try
-        if filename = "-" then
-            filename
-        else
-            let fullPath = Path.GetFullPath(filename)
+    printfn $"{topSequence}\n{sideSequence}"
 
-            if Path.Exists(fullPath) then
-                fullPath
-            else
-                printfn $"Error: given input {filename} does not exist."
-                exit 1
-    with _ ->
-        printfn $"Error: given input {filename} is not a valid path."
-        exit 1
+rootCommand.SetAction rootCommandHandler
 
-let inputData =
-    if filename = "-" then
-        Console.In.ReadToEnd()
-    else
-        File.ReadAllText(fullPath)
+let parseResult = rootCommand.Parse(cliArgs)
 
-printfn $"Read %d{inputData.Length} characters."
-
-exit 0
+exit (parseResult.Invoke())
