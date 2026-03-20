@@ -23,7 +23,7 @@ This project is a small experiment for the Korf Lab to see which languages (cobi
 - D  
   A less-popular language. However, its syntax is also clean, and you get good C interop.
 - Nim  
-  Also, less-popular new player. However, syntax is also good.
+  Another less-popular new player. However, syntax is also good. Bonus: [Nim for Python Programmers](https://github.com/nim-lang/Nim/wiki/Nim-for-Python-Programmers)!
 - Zig  
   "Modern-C" as I would like to take it. Good syntax. However, still have breaking changes, and standard library document is very obscure / incomplete.
 - Roc  
