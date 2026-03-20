@@ -4,10 +4,33 @@ This project is a small experiment for the Korf Lab to see which languages (cobi
 
 ## Implementations
 
-- F#
-  `src/SmithWaterman.FSharp/` 
-- Rust
-  `src/rust/`
+### Done
+
+- F#  
+  Works, and has a pretty cool syntax. However, a bit too different from Python, which would be a bit difficult for other lab members to adopt.
+
+### In-Progress
+
+- Crystal  
+  Largest downside is that they do not have a proper LSP. Crystalline LSP is only barely useable. No completions or type-checks in editor whatsoever, which would make life quite hard for non-specialist members.
+
+### Planned
+
+- Rust  
+  Main issue is that Rust has a bit more restrictions. If you previously only wrote Python, you would need some time to wrestle with the compiler before you can comfortably write code. Though, there are not too much syntax noise if you are not doing async / multithreaded programming.
+- Go  
+  I personally like Rust better than Go. Purely personal opinion.
+- D  
+  A less-popular language. However, its syntax is also clean, and you get good C interop.
+- Nim  
+  Also, less-popular new player. However, syntax is also good.
+- Zig  
+  "Modern-C" as I would like to take it. Good syntax. However, still have breaking changes, and standard library document is very obscure / incomplete.
+- Roc  
+  The more functional one in the field. Downside is that it's still alpha-stage, so maybe even more breaking change than Zig.
+- Kotlin
+- Scala  
+  Both candidates is not strongly-bound to JVM. They are both capable to compile to native code with LLVM, so still works.
 
 ## Test
 
