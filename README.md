@@ -5,8 +5,10 @@ This project is a small experiment for the Korf Lab to see which languages (cobi
 ## Implementations
 
 - F#
-  `src/SmithWaterman.FSharp`
-- C#
-  `src/SmithWaterman.CSharp` 
+  `src/SmithWaterman.FSharp/` 
 - Rust
-  `src/rust`
+  `src/rust/`
+
+## Test
+
+Inside the `test/` directories are small hand-curated example(s) that are used to test whether the implementations produces the correct result. They are made delibrately small to make them hand-verifiable, basically, able to run the algorithm on test data by your hand on papar.
