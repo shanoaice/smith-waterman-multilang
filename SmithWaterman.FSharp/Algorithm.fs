@@ -68,7 +68,7 @@ module private Helper =
         elif left = leftGap then Leftward
         else Stop
 
-    let backtrackAlignment (subject: string, query: string) (matrix: array<int>) scoreProperty=
+    let backtrackAlignment (subject: string, query: string) (matrix: array<int>) scoreProperty =
         let subjectLength = subject.Length
         let queryLength = query.Length
 

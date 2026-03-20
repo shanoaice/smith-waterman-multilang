@@ -5,8 +5,8 @@ authors:
   - Shanoa Ice
 
 targets:
-  crystal:
-    main: src/crystal.cr
+  smith-waterman:
+    main: src/program.cr
   ameba:
     main: bin/ameba.cr
 
