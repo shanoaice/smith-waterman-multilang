@@ -1,6 +1,6 @@
 <Solution>
   <Folder Name="/src/">
-    <Project Path="src/SmithWaterman.FSharp/SmithWaterman.FSharp.fsproj" />
-    <Project Path="src/SmithWaterman.CSharp/SmithWaterman.CSharp.csproj" />
+    <Project Path="SmithWaterman.FSharp/SmithWaterman.FSharp.fsproj" />
+    <Project Path="SmithWaterman.CSharp/SmithWaterman.CSharp.csproj" />
   </Folder>
 </Solution>
