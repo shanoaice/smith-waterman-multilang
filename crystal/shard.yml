@@ -1,13 +1,19 @@
-name: crystal
+name: smith-waterman
 version: 0.1.0
 
 authors:
-  - Shanoa Ice <your-email-here>
+  - Shanoa Ice
 
 targets:
   crystal:
     main: src/crystal.cr
+  ameba:
+    main: bin/ameba.cr
 
 crystal: '>= 1.19.1'
 
 license: MIT
+
+development_dependencies:
+  ameba:
+    github: crystal-ameba/ameba
