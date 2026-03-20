@@ -8,11 +8,11 @@ This project is a small experiment for the Korf Lab to see which languages (cobi
 
 - F#  
   Works, and has a pretty cool syntax. However, a bit too different from Python, which would be a bit difficult for other lab members to adopt.
+- Crystal  
+  Largest downside is that they do not have a proper LSP. Crystalline LSP is only barely useable. No completions or type-checks in editor whatsoever, which would make life quite hard for non-specialist members.  
+  **Additional Remarks**: Not having a proper LSP is a real issue. You don't get to see errors real-time and it feels like a rabbit hole when you compile.
 
 ### In-Progress
-
-- Crystal  
-  Largest downside is that they do not have a proper LSP. Crystalline LSP is only barely useable. No completions or type-checks in editor whatsoever, which would make life quite hard for non-specialist members.
 
 ### Planned
 
