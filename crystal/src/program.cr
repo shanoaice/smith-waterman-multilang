@@ -43,7 +43,7 @@ module SmithWaterman
     end
 
     parser.on "-m", "--match=BONUS", "Match bonus" { |bonus| match_bonus = bonus.to_i }
-    parser.on "-p", "--penalty=PENALTY", "Mismatch penalty" { |penalty| mismatch_penalty = penalty.to_i }
+    parser.on "-M", "--mismatch=PENALTY", "Mismatch penalty" { |penalty| mismatch_penalty = penalty.to_i }
     parser.on "-g", "--gap=PENALTY", "Gap penalty" { |penalty| gap_penalty = penalty.to_i }
 
     parser.missing_option do |option_flag|
