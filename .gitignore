@@ -97,3 +97,5 @@ Thumbs.db
 .idea/
 *.user
 *.suo
+
+.fake
