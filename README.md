@@ -11,6 +11,8 @@ This project is a small experiment for the Korf Lab to see which languages (cobi
 - Crystal  
   Largest downside is that they do not have a proper LSP. Crystalline LSP is only barely useable. No completions or type-checks in editor whatsoever, which would make life quite hard for non-specialist members.  
   **Additional Remarks**: Not having a proper LSP is a real issue. You don't get to see errors real-time and it feels like a rabbit hole when you compile.
+- Nim  
+  Another less-popular new player. However, syntax is also good. Bonus: [Nim for Python Programmers](https://github.com/nim-lang/Nim/wiki/Nim-for-Python-Programmers)!
 
 ### In-Progress
 
@@ -22,8 +24,6 @@ This project is a small experiment for the Korf Lab to see which languages (cobi
   I personally like Rust better than Go. Purely personal opinion.
 - D  
   A less-popular language. However, its syntax is also clean, and you get good C interop.
-- Nim  
-  Another less-popular new player. However, syntax is also good. Bonus: [Nim for Python Programmers](https://github.com/nim-lang/Nim/wiki/Nim-for-Python-Programmers)!
 - Zig  
   "Modern-C" as I would like to take it. Good syntax. However, still have breaking changes, and standard library document is very obscure / incomplete.
 - Roc  
