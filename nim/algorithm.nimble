@@ -6,7 +6,7 @@ description   = "Simple Smith-Waterman implementation"
 license       = "MIT"
 srcDir        = "src"
 installExt    = @["nim"]
-bin           = @["nim"]
+namedBin      = {"program": "bin/smith-waterman"}.toTable()
 
 
 # Dependencies
