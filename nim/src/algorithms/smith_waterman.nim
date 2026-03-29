@@ -84,12 +84,12 @@ proc backtrack_alignment(
       i = i - 1
       j = j - 1
     elif current == up_gap:
-      add(subject_alignment, subject[j - 1])
+      add(subject_alignment, subject[i - 1])
       add(query_alignment, "-")
       i = i - 1
     elif current == left_gap:
       add(subject_alignment, "-")
-      add(query_alignment, query[i - 1])
+      add(query_alignment, query[j - 1])
       j = j - 1
     else:
       break
