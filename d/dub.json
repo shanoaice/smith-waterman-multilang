@@ -1,0 +1,9 @@
+{
+	"description": "Simple smith-waterman impl in D",
+	"license": "MIT",
+	"authors": [
+		"shanoaice"
+	],
+	"copyright": "Copyright © 2026, shanoaice",
+	"name": "smith-waterman"
+}

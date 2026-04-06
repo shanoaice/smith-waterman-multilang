@@ -1,0 +1,17 @@
+.dub
+docs.json
+__dummy.html
+docs/
+/smith-waterman
+smith-waterman.so
+smith-waterman.dylib
+smith-waterman.dll
+libsmith-waterman.a
+smith-waterman.a
+smith-waterman.lib
+smith-waterman-test-*
+*.exe
+*.pdb
+*.o
+*.obj
+*.lst
