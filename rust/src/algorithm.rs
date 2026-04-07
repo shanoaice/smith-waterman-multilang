@@ -12,7 +12,7 @@ fn index(column_width: usize, row: usize, column: usize) -> usize {
     row * column_width + column
 }
 
-fn calculate_matrix(subject: &str, query: &str, matrix: &mut Vec<i32>, score_info: &ScoreInfo) {
+fn calculate_matrix(subject: &str, query: &str, matrix: &mut [i32], score_info: &ScoreInfo) {
     let subject_len = subject.len();
     let query_len = query.len();
 
@@ -48,7 +48,7 @@ enum Direction {
 fn get_traceback_direction(
     subject: &str,
     query: &str,
-    matrix: &mut Vec<i32>,
+    matrix: &mut [i32],
     column_width: usize,
     i: usize,
     j: usize,
@@ -68,9 +68,8 @@ fn get_traceback_direction(
 
     if cur == 0 {
         Direction::Stop
-    } else if cur == diagonal_match && subject.as_bytes()[i - 1] == query.as_bytes()[j - 1] {
-        Direction::Diagonal
-    } else if cur == diagonal_mismatch && subject.as_bytes()[i - 1] != query.as_bytes()[j - 1]
+    } else if (cur == diagonal_match && subject.as_bytes()[i - 1] == query.as_bytes()[j - 1])
+        || (cur == diagonal_mismatch && subject.as_bytes()[i - 1] != query.as_bytes()[j - 1])
     {
         Direction::Diagonal
     } else if cur == up_gap {
@@ -85,7 +84,7 @@ fn get_traceback_direction(
 fn backtrack_alignment(
     subject: &str,
     query: &str,
-    matrix: &mut Vec<i32>,
+    matrix: &mut [i32],
     score_info: &ScoreInfo,
 ) -> (String, String) {
     //let subject_len = subject.len();
