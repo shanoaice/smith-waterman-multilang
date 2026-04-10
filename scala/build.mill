@@ -1,0 +1,18 @@
+package build
+
+import mill.*, scalalib.*, scalanativelib.*
+
+object `package` extends ScalaNativeModule {
+  def scalaVersion = "3.8.3"
+  def scalaNativeVersion = "0.5.11"
+
+  // You can have arbitrary numbers of third-party dependencies
+  def mvnDeps = Seq(
+    mvn"com.github.scopt::scopt::4.1.0"
+  )
+
+  //object test extends ScalaNativeTests, TestModule.Utest {
+  //  def mvnDeps = Seq(mvn"com.lihaoyi::utest::0.8.9")
+  //  def testFramework = "utest.runner.Framework"
+  //}
+}
