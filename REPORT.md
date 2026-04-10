@@ -27,3 +27,11 @@ Their editor support is usable, although not completely stable. LSP sometimes ge
 ## Rust
 
 I love Rust. However, it did add a bit of burden in you mind to track ownership and stuff when you sometimes just want a working Bioinformatics program. It might still be the best choice if the project is serious and high-performance, i.e. stuff similar to [Korflab/SNAP](https://github.com/KorfLab/SNAP), but it is unsuitable for daily programming and validations for non-coding-heavy projects.
+
+## Go
+
+Some implicits need a bit of time to get used to, for example upper case for export. Additionally, I don't like Go's flag. They are not POSIX-compliant.
+
+## Scala
+
+Good language feature, however very tedious to setup -- JVM languages, as C++, are always a pain to setup for building systems. Other than that, syntax feels natural -- you can use both indent or braces, and you can have implicit or explicit returns (which is better than F# that only have implicit return). You also get ADT, and Java interop.

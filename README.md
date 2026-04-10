@@ -15,17 +15,17 @@ This project is a small experiment for the Korf Lab to see which languages (cobi
   Another less-popular new player. However, syntax is also good. Bonus: [Nim for Python Programmers](https://github.com/nim-lang/Nim/wiki/Nim-for-Python-Programmers)!
 - Rust  
   Main issue is that Rust has a bit more restrictions. If you previously only wrote Python, you would need some time to wrestle with the compiler before you can comfortably write code. Though, there are not too much syntax noise if you are not doing async / multithreaded programming.
+- Scala  
+  Not strongly-bound to JVM. Scala capable to compile to native code with LLVM (Scala Native) or GraalVM Native Image, so still works.
+- Go  
+  I personally like Rust better than Go. Purely personal opinion.
 
 ### In-Progress
 
 ### Planned
 
-- Go  
-  I personally like Rust better than Go. Purely personal opinion.
 - Zig  
   "Modern-C" as I would like to take it. Good syntax. However, still have breaking changes, and standard library document is very obscure / incomplete.
-- Scala  
-  Not strongly-bound to JVM. Scala capable to compile to native code with LLVM (Scala Native) or GraalVM Native Image, so still works.
 - CommonLisp / Scheme  
   Just for fun. I am sure we will not use it, right? ;)
 
