@@ -22,15 +22,21 @@ This project is a small experiment for the Korf Lab to see which languages (cobi
 
 - Go  
   I personally like Rust better than Go. Purely personal opinion.
-- D  
-  A less-popular language. However, its syntax is also clean, and you get good C interop.
 - Zig  
   "Modern-C" as I would like to take it. Good syntax. However, still have breaking changes, and standard library document is very obscure / incomplete.
+- Scala  
+  Not strongly-bound to JVM. Scala capable to compile to native code with LLVM (Scala Native) or GraalVM Native Image, so still works.
+- CommonLisp / Scheme  
+  Just for fun. I am sure we will not use it, right? ;)
+
+### Suspended
+
+- D  
+  A less-popular language. However, its syntax is also clean, and you get good C interop.
 - Roc  
   The more functional one in the field. Downside is that it's still alpha-stage, so maybe even more breaking change than Zig.
-- Kotlin
-- Scala  
-  Both candidates is not strongly-bound to JVM. They are both capable to compile to native code with LLVM, so still works.
+- Kotlin  
+  We got enough candidates for JVM / native.
 
 ## Test
 
