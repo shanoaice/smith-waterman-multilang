@@ -95,6 +95,6 @@ class Algorithm(subject: String, query: String, scoreInfo: ScoreInfo):
 
     (subjectLine.reverseInPlace().result(), queryLine.reverseInPlace().result())
 
-  def invoke(): (String, String) =
+  def apply(): (String, String) =
     calculateMatrix()
     backtrackAlignment()
